@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -38,343 +38,707 @@
 
 		<div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+
+				<!-- Presentación -->
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>The HTML Presentation Framework</h3>
+					<h1>Functional Javascript</h1>
+					<h3>FP feats JS</h3>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+						<small>by <a href="https://plus.google.com/+SantiagoBarchettaMP">Santi Barchetta</a> / <a href="http://twitter.com/dudesl">@dudesl</a></small>
+					</p>
+					<p>
+						<small>TGIF 12/06/2015</small>
 					</p>
 				</section>
 
-				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
-				</section>
-
-				<!-- Example of nested vertical slides -->
+				<!-- ¿Que es la programación funcional? -->
 				<section>
 					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
+						<h1>What Is Functional Programming?</h1>
 					</section>
 					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+						<h2>What Is Functional Programming?</h2>
+						<div class="fragment">
+							<h4>TL;DR</h4>
+							<p>
+								"...es un paradigma de programación declarativa basado en la utilización de funciones aritméticas que no maneja datos mutables o de estado. Enfatiza la aplicación de funciones, en contraste con el estilo de programación imperativa, que enfatiza los cambios de estado”
+							</p>
+							<a href="http://es.wikipedia.org/wiki/Programaci%C3%B3n_funcional">Wikipedia</a>
+							<p>
+								<h3 class="fragment">#Inmutabilidad</h3>
+							</p>
+							<aside class="notes">
+			          <p>
+			          	Wikipedia nos dice que es un paradigma de programación
+			          </p>
+								<p>
+			          	Me quedo con la frase "funciones aritméticas que no maneja datos mutables o de estado".
+			          </p>
+								<p>
+			          	Concepto clave: Inmutabilidad
+			          </p>
+			        </aside>
+
+						</div>
+					</section>
+
+					<section>
+						<h2>What Is Functional Programming?</h2>
+						<div class="fragment">
+							<p>
+								"...is the use of functions that transform values into units of abstraction, subsequently used to build software systems”
+							</p>
+
+							<a href="http://shop.oreilly.com/product/0636920028857.do">
+								Functional JavaScript, Michael Fogus, 2013
+							</a>
+							<p>
+								<h3 class="fragment">#Transformación</h3>
+							</p>
+							<aside class="notes">
+			          <p>
+			          	Esta def. nos habla de "transformar valores" en "unidades de abstracción".
+			          </p>
+								<p>
+									Concepto clave: Transformación
+								</p>
+			        </aside>
+						</div>
+					</section>
+
+					<section>
+						<h2>What Is Functional Programming?</h2>
+						<div class="fragment">
+							<p>
+								"...produces abstraction through clever ways of combining functions.”
+							</p>
+
+							<a href="http://eloquentjavascript.net/1st_edition/chapter6.html#p1029fd844bd24fc8">
+								Eloquent Javascript
+							</a>
+							<aside class="notes">
+			          <p>
+			          	¿Que es abstracción? Es una forma menos explícita de describir la solucion a un problema
+			          </p>
+								<p>
+									¿Por qué la abstracción es buena? Nos permite escribir soluciones mas generalizadas. DRY
+								</p>
+				        <p>Por definición, una función es una abstracción. Con una función podemos encapsular una operación que nos gustaría hacer una y otra vez</p>
+			        </aside>
+						</div>
+					</section>
+
+					<section>
+						<h2>What Is Functional Programming?</h2>
+						¿Como se produce abstracción gracias a este paradigma?
+						<p class="fragment">
+							Aprovechando el uso de funciones de primera clase (first class functions) y funciones de orden superior (higher-order functions).
+						</p>
+						<p class="fragment">
+							...y, sobre todo, evitando el scope global.
+						</p>
+						<aside class="notes">
+							<p>Concretisimo. Entonces, necesitamos un lenguaje funcional.</p>
+							<p>Evitando el uso del scope global, evitamos que se forme un "estado global" (global state) incontrolable.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Para programar funcionalmente necesitas un lenguaje funcional.</h2>
+		        <ul>
+		          <li class="fragment visible" data-fragment-index="0">FP debe ser facilitado por features del lenguaje.</li>
+		          <li class="fragment visible" data-fragment-index="1">Algunos lenguajes son estrictamente funcionales - <b>Haskell</b></li>
+		          <li class="fragment visible" data-fragment-index="2">Algunos lenguajes son funcionales, sin un forzado estricto. - <b>Scala</b></li>
+		        </ul>
+
+		        <aside class="notes">
+		          <p>Obviously, the things we've talked about need to be facilitated by the programming language</p>
+		          <p>Some languages are purely functional, others are a mash-up</p>
+		          <p>I'll be using JavaScript as the language of example</p>
+		          <p>FP is such a good idea, many languages incorporate things like lambdas</p>
+		        </aside>
+					</section>
+
+		      <section class="future" style="top: -118px; display: block;" hidden="">
+		        <h2>First Class Functions</h2>
+		        <p>Las funciones de primera clase son <b>valores</b>, y pueden ser usadas de igual forma que cualquier expresión típica.</p>
+
+		        <aside class="notes">
+		          <p>They are values. The benefit from all the advantages of being values. Code = data</p>
+		          <p>Assignment, return, argument, etc.</p>
+		        </aside>
+		      </section>
+
+		      <section class="future" style="top: -193.5px; display: block;" hidden="">
+		        <h2>First Class Functions</h2>
+
+		        <p>Pueden ser asignadas a <b>variables</b></p>
+
+		        <pre class="fragment" data-fragment-index="0">
+							<code>
+		var foo =  function(){ return 'hai' };
+
+		foo(); // "hai"
+		          </code>
+		        </pre>
+
+		        <aside class="notes">
+		          <p>You can see here that we are assigning a function to a variable.</p>
+		          <p>This is the essence of "lambdas"</p>
+		          <p>Note that it's not the return value of the function that is assigned, but the function itself.</p>
+		          <p>Expression vs. declaration. Declarations are basically destructured to expressions</p>
+		        </aside>
+		      </section>
+
+
+		      <section class="future" style="top: -213px; display: block;" hidden="">
+		        <h2>First Class Functions</h2>
+
+		        <p>Pueden ser <b>retornadas</b> por otras funciones</p>
+
+		        <pre class="fragment">
+							<code>
+		var bar = function() {
+		  return function() {return 'foo'};
+		};
+
+		bar(); // function () {return 'foo'}
+		          </code>
+		        </pre>
+
+		        <aside class="notes">
+		          <p>Note that we assign a function to the variable bar</p>
+		          <p>And when we call the function referenced by bar, we get another function</p>
+		        </aside>
+		      </section>
+		      <section class="future" style="top: -213px; display: none;" hidden="">
+		        <h2>First Class Functions</h2>
+
+		        <p>Pueden ser pasadas como <b>argumentos</b> a otras funciones.</p>
+
+		        <pre class="fragment" data-fragment-index="0">          <code class="actionscript">
+		var baz = function(func) {
+			return func();
+		};
+
+		baz(function() {return 'foo'}) // "foo"
+		          </code>
+		        </pre>
+
+		        <aside class="notes">
+		          <p>Here, we add a function to our argument list. It gets fired off from the original function, since it's been aliased to func</p>
+		          <p>Probably looks a bit familiar. Like a callback in an event handler</p>
+		        </aside>
+		      </section>
+		      <section class="future" style="top: -233px; display: none;" hidden="">
+		        <h2>Higher-Order Functions</h2>
+		        <p>Podemos usar funciones como parametros <b>y/o</b> retornar una función</p>
+
+		        <pre class="fragment" data-fragment-index="0">          <code class="matlab">
+		var bar = function(func) {
+		        return function() {
+		          return func();
+		        };
+		      };
+
+		bar(function() {return 'foo'})() // "foo"
+		          </code>
+		        </pre>
+
+		        <aside class="notes">
+		          <p>Functions that operate on functions</p>
+		          <p>Notice the immediate function invocation at the end</p>
+		        </aside>
+		      </section>
+				</section>
+
+				<!-- ¿Por que programar con javascript funcional? -->
+				<section>
+					<section>
+						<h1>Why Functionally Program with JavaScript?</h1>
 					</section>
 					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
+		        <h2>La FP es una característica de JS</h2>
+
+		        <ul>
+		          <li class="fragment visible" data-fragment-index="0">JS tiene first class functions (y funciones anónimas)</li>
+		          <li class="fragment visible" data-fragment-index="1">JS tiene higher-order functions</li>
+		          <li class="fragment visible" data-fragment-index="2">JS tiene CLOSURES!</li>
+		        </ul>
+
+		        <aside class="notes">
+		          <p>La FP es una característica de javascript.</p>
+		          <p>Debemos conocer esta funcionalidad, para ser mejores JS'rs</p>
+		          <p>Si lo pensas un poquito...es una de las mejores caracteristicas.</p>
+		        </aside>
 					</section>
+
+					<section>
+		        <h2>Functional JS hace que tus scripts sean mejores.</h2>
+
+		        <ul>
+		          <li class="fragment visible" data-fragment-index="0">Alienta a unidades de código mas pequeñas.</li>
+		          <li class="fragment visible" data-fragment-index="1">Es facil de leer y razonar.</li>
+		          <li class="fragment visible current-fragment" data-fragment-index="2">Es DRY (do not repeat yourself)</li>
+		        </ul>
+
+		        <aside class="notes">
+		          <p>Las funciones chiquitas son mas fáciles de testear y de leer</p>
+		          <p>Las funciones pequeñas son de responsabilidad única. Una cosa por función, menos carga cognitiva</p>
+		          <p>El código bien encapsulado es elegante</p>
+		        </aside>
+					</section>
+
+					<section>
+		        <h2>Conceptos de FP en muchos lenguajes</h2>
+		        <p>Es mas bien un estilo, no una sintaxis particular</p>
+
+		        <ul>
+		          <li class="fragment visible" data-fragment-index="0">Haskell</li>
+		          <li class="fragment visible" data-fragment-index="1">Erlang</li>
+		          <li class="fragment visible" data-fragment-index="2">Scala</li>
+		          <li class="fragment visible" data-fragment-index="3">Clojure</li>
+		          <li class="fragment visible" data-fragment-index="4">Uh... matemática</li>
+		        </ul>
+
+		        <aside class="notes">
+		          <p>It gives you a powerful paradigm that may lead you elsewhere</p>
+		        </aside>
+		      </section>
 				</section>
 
+				<!-- ¿Como programar javascript funcional? -->
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+					<section>
+						<h1>How, functional JavaScript?</h1>
 
 						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
+							<p>We meet our criteria, let's see some examples</p>
+							<p>These "techniques" are built of one another</p>
 						</aside>
 					</section>
 					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
+						<h2>Recapitulando</h2>
+						<p>Vimos:</p>
+
+						<ul>
+							<li class="fragment visible" data-fragment-index="0">Algunos pilares de la FP:
+							<ul><li class="fragment" data-fragment-index="1">Inmutabilidad</li><li class="fragment" data-fragment-index="2">Transformación</li><li class="fragment" data-fragment-index="3">First class functions</li></ul></li>
+							<li class="fragment hidden" data-fragment-index="4">Higer order functions: Que son las funciones de orden superior.</li>
+						</ul>
+						<aside class="notes">
+							<p>With first class functions, suddenly you have a lot of tricks you can pull off</p>
+							<p>I'll talk about some of those tricks, why they're useful.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Stateless functions</h2>
+						<p>Las funciones 'statetful' mutan de estado fuera de su propio scope. La FP lo evita.</p>
+
+						<pre class="fragment visible" data-fragment-index="0">          <code class="javascript">
+		var number = 1; // No es FP
+
+		var increment = function() {
+			return number += 1;
+		};
+
+		increment(); // 2
+		increment(); // 3
+		increment(); // 4
+
+							</code>
+
+							* Stephen Young <a href="http://stephen-young.me.uk/2013/01/20/functional-programming-with-javascript.html">[2]</a>
+						</pre>
+
+						<aside class="notes">
+							<p>First up, let's talk about how state is dealt with in FP</p>
+							<ul>
+								<li>What is state? It's simply the state of our program. What we're doing, what we're messing with</li>
+								<li>What todo have I selected? What page am I editing?</li>
+								<li>State, at root, is stored in containers (variables)</li>
+								<li>How does FP avoid mutating state?</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>Stateless Functions</h2>
+						<p>Las funciones 'stateless' no mutan de estado fuera de su scope.</p>
+
+						<pre class="fragment visible current-fragment" data-fragment-index="0">          <code class="javascript">
+		var number = 1;
+
+		var increment = function(n) {
+				return n + 1;
+		};
+
+		increment(number); // 2
+		increment(number); // 2
+		increment(number); // 2
+							</code>
+
+							* Stephen Young <a href="http://stephen-young.me.uk/2013/01/20/functional-programming-with-javascript.html">[2]</a>
+						</pre>
+
+						<aside class="notes">
+							<p>Async!</p>
+							<p>This function looks almost the same as before, except this time we're passing an argument</p>
+							<p>We want a function to always give the same value back.</p>
+							<p>We can build pipelines this way</p>
+							<p>Mutating shared states can have unexpected consequences</p>
+							<p>Shared state makes async programming hard. Maybe impossible</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Stateless Functions</h2>
+						<blockquote>Evitando los efectos colaterales (side effects).</blockquote>
+						<p>Las funciones 'stateless' nos permiten evitar efectos colaterales en nuestra apliación.</p>
+
+						<pre class="fragment visible current-fragment" data-fragment-index="0">          <code class="javascript">
+
+		var number = 2;
+		var sideEffect = function(n) {
+		  number = n * 3;
+		  return number * n;
+		};
+		sideEffect(3);
+
+							</code>
+
+							* Stephen Young <a href="http://stephen-young.me.uk/2013/01/20/functional-programming-with-javascript.html">[2]</a>
+						</pre>
+
+						<aside class="notes">
+							<p>Async!</p>
+							<p>This function looks almost the same as before, except this time we're passing an argument</p>
+							<p>We want a function to always give the same value back.</p>
+							<p>We can build pipelines this way</p>
+							<p>Mutating shared states can have unexpected consequences</p>
+							<p>Shared state makes async programming hard. Maybe impossible</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Recursión para hacer looping</h2>
+
+						<blockquote>
+							<p>To understand recursion, you must understand recursion.</p>
+							<p>*Anonymous</p>
+						</blockquote>
+
+						<aside class="notes">
+							<p>So, if we're stateless, how do we loop?</p>
+							<p>One way is to leverage recursion</p>
+						</aside>
+
+					</section>
+					<section>
+						<h2>Recursión para hacer looping</h2>
+
+						<p>Funciones que se llaman a sí mismas</p>
+
+						<pre class="fragment visible current-fragment" data-fragment-index="0">          <code class="javascript">
+		var loop = function(n) {
+			if (n > 9) {
+				console.log(n);
+				return;
+			} else {
+				console.log(n);
+				loop(n + 1);
+			}
+		};
+
+		loop(0);
+							</code>
+
+							* Stephen Young <a href="http://stephen-young.me.uk/2013/01/20/functional-programming-with-javascript.html">[2]</a>
+						</pre>
+
+						<aside class="notes">
+							<p>Notice that we're not using a for or while loop, because they are stateful</p>
+
+							<ul>
+								<li>Can be stateless</li>
+								<li>Can be memoized</li>
+								<li>Caveat: Have a call stack limitations</li>
+								<li>So: Can be trampolined</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>Array.prototype#Methods</h2>
+
+						<blockquote>
+							<p>Applicative programming is a technique that allows a function to be applied to each element of a list</p>
+							<p>*Mary Simoni <a href="http://quod.lib.umich.edu/s/spobooks/bbv9810.0001.001/1:15/--algorithmic-composition-a-gentle-introduction-to-music?rgn=div1;view=fulltext">[3]</a></p>
+						</blockquote>
+
+						<aside class="notes">
+							<p>More looping!</p>
+							<p>Looping on lists is crucial</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Array.prototype#Methods</h2>
+
+						<p>Array.prototype.map()</p>
+
+						<pre class="fragment" data-fragment-index="0">
+							<code class="actionscript">
+		var squared = [1, 2, 3, 4, 5].map(function(el) {
+			return Math.pow(el, 2);
+		}); // [1, 4, 9, 16, 25]
+							</code>
+						</pre>
+
+						<aside class="notes">
+							<p>Projection</p>
+							<p>We're not mutating the array. We're storing our return in a new bucket.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Array.prototype#Methods</h2>
+
+						<p>Array.prototype.filter()</p>
+
+						<pre class="fragment visible" data-fragment-index="0">          <code class="actionscript">
+		var even = [1, 2, 3, 4, 5].filter(function(el) {
+			return el % 2 === 0;
+		}); // [2, 4]
+							</code>
+						</pre>
+
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+						<h2>Array.prototype#Methods</h2>
+
+						<p>Array.prototype.reduce()</p>
+
+						<pre class="fragment" data-fragment-index="0">          <code class="actionscript">
+		var sum = [1, 2, 3, 4, 5].reduce(function(memo, curr) {
+			return memo + curr;
+		}); // 15
+									</code>
+						</pre>
+
+						<aside class="notes">
+							<p>Projection</p>
+							<p>Tricks like algebraic logic. Can reduce to true/false.</p>
+							<p>Can reduce a list to another type. Array to Object</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Funciones predicados</h2>
+
+						<blockquote>
+							<p>Un predicado determina cuando algo es verdadero o falso.</p>
+						</blockquote>
+					</section>
+					<section>
+						<h2>Funciones predicados</h2>
+
+						<pre class="fragment visible current-fragment" data-fragment-index="0">          <code class="actionscript">
+		var isNull = function(obj) {
+			return obj === null;
+		};
+
+		isNull(null) // true
+							</code>
+						</pre>
+
+						<aside class="notes">
+							<p>Array.prototype.filter() could use a predicate.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Closures</h2>
+						<blockquote>
+							<p>Closures are functions that refer to independent (free) variables... the function defined in the closure "remembers" the environment in which it was created.</p>
+							<p>*Mozilla Developer Network<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures">[5]</a></p>
+						</blockquote>
+					</section>
+					<section>
+						<h2>Closures</h2>
+
+						<pre class="fragment visible current-fragment" data-fragment-index="0">          <code class="actionscript">
+		function stringCount(string) {
+			return function(subString) {
+				return string.match(new RegExp(subString, 'g')).length;
+			};
+		}
+
+		var count = stringCount('sup sup sup');
+
+		count('sup'); // 3
+							</code>
+						</pre>
+
+						<aside class="notes">
+							<p>Closures are much easier than they are made out to be, because a lot of folks are introduced to them in the wrong way.</p>
+							<p>Function context (call-site) and lexical scope (variable lookup) are why JS has closures.</p>
+							<p>Closures are why we can curry functions in JS.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Closures</h2>
+						<blockquote>
+							Memoise Pattern
+						</blockquote>
+						<pre class="fragment">          <code class="javascript">
+		var memoise = function(func) {
+		  var cache = {};
+		  return function(arg) {
+		    if (arg in cache) {
+		      console.log(arg + ' in cache');
+		      return cache[arg];
+		    } else {
+		      console.log(arg + 'not in cache');
+		      return cache[arg] = func(arg);
+		    }
+		  };
+		};
+
+		var memo = memoise(function(n) {
+		  return n * 2;
+		});
+
+		memo(1) // 2 (1 not in cache)
+		memo(1) // 2 (1 in cache)
+							</code>
+						</pre>
+
+						<aside class="notes">
+							<p>Una aplicación directa de Closures: el patron memoise.</p>
+							<p>Generamos una cache en el closure, y vamos guardando los valores que vayamos calculando</p>
+							<p>Cuando intentemos recuperar un valor que ya fue calculado, vamos a ganar en performance, ya que ese valor ya existe en memoria.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Curried functions</h2>
+
+						<blockquote>
+							<p>La "currificación" (Currying) o aplicación parcial, es la técnica de transformar una función con aridad <b>n</b> en otra función equivalente, de aridad <b>1</b>.</p>
+
+						</blockquote>
+
+					</section>
+					<section>
+						<h2>Curried Functions</h2>
+
+						<pre class="fragment visible" data-fragment-index="0">
+							 <code class="actionscript">
+
+		var foo = function (x) {
+		   return function (y) {
+		     return function (z) {
+		       return x + y + z;
+		     }
+		   }
+		 }
+
+		 var bar = foo(1) // partially applied function
+		 bar(2)(3) // 6
+
+							</code>
+						</pre>
+
+						<aside class="notes">
+							<ul>
+								<li>Functions made up of unary functions</li>
+								<li>Functions that wait to yield a value until all arguments are passed</li>
+								<li>In other words, a variadic function made of nested unary functions</li>
+								<li>Can be approximated using Function.prototype.bind()</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>Composición de funciones</h2>
+
+						<blockquote>
+							<p>It’s really that simple: Whenever you are chaining two or more functions together, you’re composing them</p>
+							<p>*Reginald Braithwaite <a href="http://braythwayt.com/">[4]</a></p>
+						</blockquote>
+					</section>
+					<section>
+						<h2>Composición de funciones</h2>
+
+						<pre class="fragment visible" data-fragment-index="0">          <code class="actionscript">
+
+		var compose = function(a, b) {
+			return function (c) {
+				return a(b(c));
+			};
+		};
+
+		var addOne = function(number) { return number + 1 };
+		var double = function(number) { return number * 2 };
+		var addOneAndDouble = compose(double, addOne); // right to left
+
+		addOneAndDouble(2); // 6
+
+							</code>
+						</pre>
+
+						<aside class="notes">
+							<p>This is one of my favorites. Notice it's leveraging partial application.</p>
+							<p>This ties into the idea of DRY. Make symbol, general purpose functions that you combine into more complex or specific functions.</p>
+						</aside>
 					</section>
 				</section>
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
-
+				<!-- Third Party's -->
 				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-						<h2>... and GIFs!</h2>
-					</section>
+				  <section>
+				    <h1>ez Mode</h1>
+
+				    <p>(AKA Easy Mode)</p>
+				    <aside class="notes">
+				      <p>Don't need libraries, but because FP is made up of many common idioms, it's nice to not have to write them.</p>
+				    </aside>
+				  </section>
+
+				  <section>
+				    <h2>Underscore/Lo-Dash</h2>
+
+				    <pre class="fragment" data-fragment-index="0">          <code class="actionscript">
+		var numbers = _.filter([1, 'foo', 3, 'bar', 5, 6], _.isNumber); // [1, 3, 5, 6]
+
+		var evens = _.filter([1, 2, 3, 4, 5, 6], function(num) {
+			return num % 2 == 0;
+		}); // [2, 4, 6]
+
+				      </code>
+				    </pre>
+
+				    <aside class="notes">
+				      <p>RTFM. The underscore annotated source is SOOOOOO good</p>
+				    </aside>
+				  </section>
+
+				  <section>
+				    <h2>Ramda</h2>
+
+				    <pre class="fragment" data-fragment-index="0">          <code class="actionscript">
+		var evens = ramda.filter(function(num){ return num % 2 === 0; });
+		evens([1, 2, 3, 4, 5, 6]); // [2, 4, 6]
+				      </code>
+				    </pre>
+				  </section>
+					<section>
+			      <h1>Y mucho mas!</h1>
+			      <p>Hay muchas cosas por saber de FP</p>
+
+			      <ul>
+			        <li class="fragment visible" data-fragment-index="0">Functors</li>
+			        <li class="fragment visible" data-fragment-index="1">Monads</li>
+			        <li class="fragment visible" data-fragment-index="2">Promises</li>
+			        <li class="fragment visible" data-fragment-index="3">Combinators</li>
+			      </ul>
+
+			    </section>
 				</section>
-
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
-
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Marvelous List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section>
-					<h2>Tabular Tables</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Item</th>
-								<th>Value</th>
-								<th>Quantity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Apples</td>
-								<td>$1</td>
-								<td>7</td>
-							<tr>
-							<tr>
-								<td>Lemonade</td>
-								<td>$2</td>
-								<td>18</td>
-							<tr>
-							<tr>
-								<td>Bread</td>
-								<td>$3</td>
-								<td>2</td>
-							<tr>
-						</tbody>
-					</table>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-					<iframe src="//www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the page background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>State Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
-				</section>
-
-				<section>
-					<h2>Much more</h2>
-					<ul>
-						<li>Right-to-left support</li>
-						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-					</ul>
-				</section>
-
-				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
-				</section>
-
 			</div>
 
 		</div>
@@ -391,8 +755,10 @@ Reveal.addEventListener( 'customevent', function() {
 				progress: true,
 				history: true,
 				center: true,
+				hideAddressBar: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+				theme: Reveal.getQueryHash().theme,
 
 				// Optional reveal.js plugins
 				dependencies: [
