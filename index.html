@@ -585,28 +585,9 @@
 						<h2>Closures</h2>
 						<blockquote>
 							Memoise Pattern
+							<small><a href="http://codeshare.io/bpw0L">Editor</a></small>
 						</blockquote>
-						<pre class="fragment">          <code class="javascript">
-		var memoise = function(func) {
-		  var cache = {};
-		  return function(arg) {
-		    if (arg in cache) {
-		      console.log(arg + ' in cache');
-		      return cache[arg];
-		    } else {
-		      console.log(arg + 'not in cache');
-		      return cache[arg] = func(arg);
-		    }
-		  };
-		};
-
-		var memo = memoise(function(n) {
-		  return n * 2;
-		});
-
-		memo(1) // 2 (1 not in cache)
-		memo(1) // 2 (1 in cache)
-							</code>
+						<pre class="fragment">
 						</pre>
 
 						<aside class="notes">
