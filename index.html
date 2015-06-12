@@ -49,6 +49,8 @@
 					</p>
 					<p>
 						<small>TGIF 12/06/2015</small>
+						<small><a href="http://bit.ly/tgif-fp">Example Code</a></small>
+						<small><a href="http://dudesl.github.io/functional-javascript">Live presentation</a></small>
 					</p>
 				</section>
 
@@ -131,7 +133,7 @@
 
 					<section>
 						<h2>What Is Functional Programming?</h2>
-						¿Como se produce abstracción gracias a este paradigma?
+						¿Como la FP produce abstracción?
 						<p class="fragment">
 							Aprovechando el uso de funciones de primera clase (first class functions) y funciones de orden superior (higher-order functions).
 						</p>
@@ -145,9 +147,10 @@
 					</section>
 
 					<section>
-						<h2>Para programar funcionalmente necesitas un lenguaje funcional.</h2>
+						<h4>Para programar funcionalmente </h4>
+						<h2>necesitas un lenguaje funcional.</h2>
 		        <ul>
-		          <li class="fragment visible" data-fragment-index="0">FP debe ser facilitado por features del lenguaje.</li>
+		          <li class="fragment visible" data-fragment-index="0">FP debe ser facilitado por el lenguaje.</li>
 		          <li class="fragment visible" data-fragment-index="1">Algunos lenguajes son estrictamente funcionales - <b>Haskell</b></li>
 		          <li class="fragment visible" data-fragment-index="2">Algunos lenguajes son funcionales, sin un forzado estricto. - <b>Scala</b></li>
 		        </ul>
@@ -251,6 +254,28 @@
 		          <p>Notice the immediate function invocation at the end</p>
 		        </aside>
 		      </section>
+		      <section>
+		        <h2>Pure Functions</h2>
+
+		        <pre class="fragment" data-fragment-index="0">          <code class="matlab">
+		function power(base, exponent) {
+		  var result = 1;
+		  for (var count = 0; count < exponent; count++)
+		    result *= base;
+		  return result;
+		}
+
+		show(power(2, 10));
+		          </code>
+		        </pre>
+						<blockquote class="fragment">they always return the same value when given the same arguments, and never have side effects.
+							<a href="http://eloquentjavascript.net/1st_edition/chapter3.html#p522f322a2c4f7492">Eloquent Javascript</a></blockquote>
+
+		        <aside class="notes">
+		          <p>Functions that operate on functions</p>
+		          <p>Notice the immediate function invocation at the end</p>
+		        </aside>
+		      </section>
 				</section>
 
 				<!-- ¿Por que programar con javascript funcional? -->
@@ -278,9 +303,10 @@
 		        <h2>Functional JS hace que tus scripts sean mejores.</h2>
 
 		        <ul>
-		          <li class="fragment visible" data-fragment-index="0">Alienta a unidades de código mas pequeñas.</li>
-		          <li class="fragment visible" data-fragment-index="1">Es facil de leer y razonar.</li>
-		          <li class="fragment visible current-fragment" data-fragment-index="2">Es DRY (do not repeat yourself)</li>
+		          <li class="fragment visible">Alienta a unidades de código mas pequeñas.</li>
+		          <li class="fragment visible">Es DRY (do not repeat yourself)</li>
+							<li class="fragment visible">Más semántico, mas declarativo.</li>
+							<li class="fragment visible">Es facil de leer y razonar.</li>
 		        </ul>
 
 		        <aside class="notes">
@@ -323,9 +349,10 @@
 						<p>Vimos:</p>
 
 						<ul>
-							<li class="fragment visible" data-fragment-index="0">Algunos pilares de la FP:
+							<li class="fragment" data-fragment-index="0">Algunos pilares de la FP:
 							<ul><li class="fragment" data-fragment-index="1">Inmutabilidad</li><li class="fragment" data-fragment-index="2">Transformación</li><li class="fragment" data-fragment-index="3">First class functions</li></ul></li>
-							<li class="fragment hidden" data-fragment-index="4">Higer order functions: Que son las funciones de orden superior.</li>
+							<li class="fragment hidden" data-fragment-index="4">Higer order functions</li>
+							<li class="fragment hidden" data-fragment-index="5">Pure functions</li>
 						</ul>
 						<aside class="notes">
 							<p>With first class functions, suddenly you have a lot of tricks you can pull off</p>
@@ -392,8 +419,7 @@
 					</section>
 					<section>
 						<h2>Stateless Functions</h2>
-						<blockquote>Evitando los efectos colaterales (side effects).</blockquote>
-						<p>Las funciones 'stateless' nos permiten evitar efectos colaterales en nuestra apliación.</p>
+						<p>Las funciones 'stateless' nos permiten evitar efectos secundarios en nuestra apliación.</p>
 
 						<pre class="fragment visible current-fragment" data-fragment-index="0">          <code class="javascript">
 
