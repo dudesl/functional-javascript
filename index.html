@@ -61,7 +61,7 @@
 					</section>
 					<section>
 						<h2>What Is Functional Programming?</h2>
-						<div class="fragment">
+						<div class="">
 							<h4>TL;DR</h4>
 							<p>
 								"...es un paradigma de programación declarativa basado en la utilización de funciones aritméticas que no maneja datos mutables o de estado. Enfatiza la aplicación de funciones, en contraste con el estilo de programación imperativa, que enfatiza los cambios de estado”
@@ -87,7 +87,7 @@
 
 					<section>
 						<h2>What Is Functional Programming?</h2>
-						<div class="fragment">
+						<div class="">
 							<p>
 								"...is the use of functions that transform values into units of abstraction, subsequently used to build software systems”
 							</p>
@@ -111,7 +111,7 @@
 
 					<section>
 						<h2>What Is Functional Programming?</h2>
-						<div class="fragment">
+						<div class="">
 							<p>
 								"...produces abstraction through clever ways of combining functions.”
 							</p>
@@ -163,7 +163,7 @@
 		        </aside>
 					</section>
 
-		      <section class="future" style="top: -118px; display: block;" hidden="">
+		      <section>
 		        <h2>First Class Functions</h2>
 		        <p>Las funciones de primera clase son <b>valores</b>, y pueden ser usadas de igual forma que cualquier expresión típica.</p>
 
@@ -173,7 +173,7 @@
 		        </aside>
 		      </section>
 
-		      <section class="future" style="top: -193.5px; display: block;" hidden="">
+		      <section>
 		        <h2>First Class Functions</h2>
 
 		        <p>Pueden ser asignadas a <b>variables</b></p>
@@ -195,7 +195,7 @@
 		      </section>
 
 
-		      <section class="future" style="top: -213px; display: block;" hidden="">
+		      <section>
 		        <h2>First Class Functions</h2>
 
 		        <p>Pueden ser <b>retornadas</b> por otras funciones</p>
@@ -215,7 +215,7 @@
 		          <p>And when we call the function referenced by bar, we get another function</p>
 		        </aside>
 		      </section>
-		      <section class="future" style="top: -213px; display: none;" hidden="">
+		      <section>
 		        <h2>First Class Functions</h2>
 
 		        <p>Pueden ser pasadas como <b>argumentos</b> a otras funciones.</p>
@@ -234,7 +234,7 @@
 		          <p>Probably looks a bit familiar. Like a callback in an event handler</p>
 		        </aside>
 		      </section>
-		      <section class="future" style="top: -233px; display: none;" hidden="">
+		      <section>
 		        <h2>Higher-Order Functions</h2>
 		        <p>Podemos usar funciones como parametros <b>y/o</b> retornar una función</p>
 
@@ -268,7 +268,7 @@
 		show(power(2, 10));
 		          </code>
 		        </pre>
-						<blockquote class="fragment">they always return the same value when given the same arguments, and never have side effects.
+						<blockquote class="fragment"  data-fragment-index='0'>they always return the same value when given the same arguments, and never have side effects.
 							<a href="http://eloquentjavascript.net/1st_edition/chapter3.html#p522f322a2c4f7492">Eloquent Javascript</a></blockquote>
 
 		        <aside class="notes">
@@ -284,7 +284,7 @@
 						<h1>Why Functionally Program with JavaScript?</h1>
 					</section>
 					<section>
-		        <h2>La FP es una característica de JS</h2>
+		        <h2>JS es un lenguaje funcional</h2>
 
 		        <ul>
 		          <li class="fragment visible" data-fragment-index="0">JS tiene first class functions (y funciones anónimas)</li>
@@ -300,11 +300,11 @@
 					</section>
 
 					<section>
-		        <h2>Functional JS hace que tus scripts sean mejores.</h2>
+		        <h2>Functional JS hace que tus scripts sean mejores</h2>
 
 		        <ul>
 		          <li class="fragment visible">Alienta a unidades de código mas pequeñas.</li>
-		          <li class="fragment visible">Es DRY (do not repeat yourself)</li>
+		          <li class="fragment visible">Es DRY (do not repeat yourself).</li>
 							<li class="fragment visible">Más semántico, mas declarativo.</li>
 							<li class="fragment visible">Es facil de leer y razonar.</li>
 		        </ul>
@@ -318,7 +318,7 @@
 
 					<section>
 		        <h2>Conceptos de FP en muchos lenguajes</h2>
-		        <p>Es mas bien un estilo, no una sintaxis particular</p>
+		        <p>Es mas bien un estilo, no una sintaxis particular.</p>
 
 		        <ul>
 		          <li class="fragment visible" data-fragment-index="0">Haskell</li>
@@ -361,7 +361,7 @@
 					</section>
 					<section>
 						<h2>Stateless functions</h2>
-						<p>Las funciones 'statetful' mutan de estado fuera de su propio scope. La FP lo evita.</p>
+						<p>Las expresiones 'statetful' modifican el entorno (estado) actual del programa. La FP lo evita.</p>
 
 						<pre class="fragment visible" data-fragment-index="0">          <code class="javascript">
 		var number = 1; // No es FP
@@ -391,7 +391,7 @@
 					</section>
 					<section>
 						<h2>Stateless Functions</h2>
-						<p>Las funciones 'stateless' no mutan de estado fuera de su scope.</p>
+						<p>Las expresiones 'stateless' no cambian el estado por fuera de su scope.</p>
 
 						<pre class="fragment visible current-fragment" data-fragment-index="0">          <code class="javascript">
 		var number = 1;
@@ -445,7 +445,34 @@
 						</aside>
 					</section>
 					<section>
-						<h2>Recursión para hacer looping</h2>
+						<h2>Statefull looping</h2>
+
+
+						<pre class="fragment visible" data-fragment-index="0">          <code class="javascript">
+		var n = 10;
+		var loop = function() {
+		  for (var x = 0; x < n; x += 1) {
+		    console.log(x);
+		  }
+		};
+		loop();
+							</code>
+
+							* Stephen Young <a href="http://stephen-young.me.uk/2013/01/20/functional-programming-with-javascript.html">[2]</a>
+						</pre>
+
+						<aside class="notes">
+							<p>First up, let's talk about how state is dealt with in FP</p>
+							<ul>
+								<li>What is state? It's simply the state of our program. What we're doing, what we're messing with</li>
+								<li>What todo have I selected? What page am I editing?</li>
+								<li>State, at root, is stored in containers (variables)</li>
+								<li>How does FP avoid mutating state?</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>Recursión</h2>
 
 						<blockquote>
 							<p>To understand recursion, you must understand recursion.</p>
@@ -459,7 +486,7 @@
 
 					</section>
 					<section>
-						<h2>Recursión para hacer looping</h2>
+						<h2>Recursión</h2>
 
 						<p>Funciones que se llaman a sí mismas</p>
 
