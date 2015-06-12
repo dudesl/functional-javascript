@@ -671,44 +671,43 @@
 
 				<!-- Third Party's -->
 				<section>
-				  <section>
-				    <h1>ez Mode</h1>
+					<section>
+				    <h1>Y mas!</h1>
 
-				    <p>(AKA Easy Mode)</p>
+				    <aside class="notes">
+				      <p>Don't need libraries, but because FP is made up of many common idioms, it's nice to not have to write them.</p>
+				    </aside>
+				  </section>
+					<section>
+				    <h2>Third Party Libs</h2>
+
+
+				    <pre class="fragment" data-fragment-index="0">
+							<h3>Underscore/Lo-Dash</h3>	<code class="actionscript">
+	var numbers = _.filter([1, 'foo', 3, 'bar', 5, 6], _.isNumber); // [1, 3, 5, 6]
+
+	var evens = _.filter([1, 2, 3, 4, 5, 6], function(num) {
+		return num % 2 == 0;
+	}); // [2, 4, 6]
+				      </code>
+				    </pre>
+
+
+				    <pre class="fragment" data-fragment-index="0"><h3>Ramda</h3><code class="actionscript">
+	var evens = ramda.filter(function(num){ return num % 2 === 0; });
+	evens([1, 2, 3, 4, 5, 6]); // [2, 4, 6]
+				      </code>
+				    </pre>
+
 				    <aside class="notes">
 				      <p>Don't need libraries, but because FP is made up of many common idioms, it's nice to not have to write them.</p>
 				    </aside>
 				  </section>
 
 				  <section>
-				    <h2>Underscore/Lo-Dash</h2>
-
-				    <pre class="fragment" data-fragment-index="0">          <code class="actionscript">
-		var numbers = _.filter([1, 'foo', 3, 'bar', 5, 6], _.isNumber); // [1, 3, 5, 6]
-
-		var evens = _.filter([1, 2, 3, 4, 5, 6], function(num) {
-			return num % 2 == 0;
-		}); // [2, 4, 6]
-
-				      </code>
-				    </pre>
-
-				    <aside class="notes">
-				      <p>RTFM. The underscore annotated source is SOOOOOO good</p>
-				    </aside>
-				  </section>
-
-				  <section>
-				    <h2>Ramda</h2>
-
-				    <pre class="fragment" data-fragment-index="0">          <code class="actionscript">
-		var evens = ramda.filter(function(num){ return num % 2 === 0; });
-		evens([1, 2, 3, 4, 5, 6]); // [2, 4, 6]
-				      </code>
-				    </pre>
 				  </section>
 					<section>
-			      <h1>Y mucho mas!</h1>
+			      <h1>Conceptos avanzados</h1>
 			      <p>Hay muchas cosas por saber de FP</p>
 
 			      <ul>
@@ -719,6 +718,10 @@
 			      </ul>
 
 			    </section>
+				</section>
+				<section>
+					<h1>Vamos!</h1>
+					<p>Hagamos mejor código</p>
 				</section>
 			</div>
 
